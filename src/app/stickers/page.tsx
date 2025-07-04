@@ -5,15 +5,29 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { stickers } from '@/lib/stickers-data';
 import { ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import { useCart } from '@/hooks/use-cart';
+import { useState } from 'react';
 
 export default function StickersPage() {
   const { addToCart } = useCart();
+  const searchParams = useSearchParams();
+  const searchTerm = searchParams.get('search');
+
+  // Filter stickers based on search term
+  const filteredStickers = searchTerm
+    ? stickers.filter(
+        (sticker) =>
+          sticker.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          sticker.description.toLowerCase().includes(searchTerm.toLowerCase()),
+      )
+    : stickers;
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-12 text-center">
         <h1 className="text-4xl font-bold tracking-tight md:text-5xl font-headline">
+
           Our Sticker Collection
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
@@ -22,7 +36,7 @@ export default function StickersPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-        {stickers.map((sticker) => (
+        {filteredStickers.map((sticker) => (
           <Card key={sticker.id} className="group flex flex-col overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
             <CardHeader className="p-0 border-b">
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden xl:aspect-h-8 xl:aspect-w-7">

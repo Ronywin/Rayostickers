@@ -1,13 +1,25 @@
 'use client';
 
 import { useCart } from '@/hooks/use-cart';
+import { useState } from 'react';
 import { ShoppingCart, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from './ui/button';
+import { useRouter, usePathname } from 'next/navigation';
+import { Input } from './ui/input';
 
 const Header = () => {
   const { cartItems, isCartLoaded } = useCart();
   const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    router.push(`/stickers?search=${searchTerm}`);
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -16,7 +28,14 @@ const Header = () => {
           <Sparkles className="h-6 w-6 text-iridescent" />
           Rayo Stickers
         </Link>
+        {pathname === '/stickers' && (
+          <form onSubmit={handleSearch} className="flex-grow flex justify-center">
+            <Input type="text" placeholder="Search stickers..." className="max-w-xs w-full px-3 py-2 border rounded-md text-sm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+          </form>
+        )}
+
         <nav className="flex items-center gap-1 sm:gap-2">
+
           <Button variant="ghost" asChild>
             <Link href="/stickers" className="font-semibold text-muted-foreground transition-colors hover:text-foreground">
               Stickers
@@ -43,5 +62,4 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;
