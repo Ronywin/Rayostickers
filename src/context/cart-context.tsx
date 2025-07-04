@@ -60,16 +60,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       return [...prevItems, { ...sticker, quantity: 1 }];
     });
     toast({
-      title: "Added to cart!",
-      description: `${sticker.name} is now in your shopping cart.`,
+      title: "¡Añadido al carrito!",
+      description: `${sticker.name} ahora está en tu carrito de compras.`,
     });
   };
 
   const removeFromCart = (id: string) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
     toast({
-        title: "Item removed",
-        description: "The sticker has been removed from your cart.",
+        title: "Producto eliminado",
+        description: "El sticker ha sido eliminado de tu carrito.",
         variant: 'destructive'
       });
   };
@@ -90,8 +90,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       );
       if (stickerName) {
         toast({
-            title: "Cart updated",
-            description: `Quantity for ${stickerName} has been updated.`,
+            title: "Carrito actualizado",
+            description: `La cantidad para ${stickerName} ha sido actualizada.`,
         });
       }
     }

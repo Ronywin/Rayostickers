@@ -28,10 +28,10 @@ export default function StickersPage() {
       <div className="mb-12 text-center">
         <h1 className="text-4xl font-bold tracking-tight md:text-5xl font-headline">
 
-          Our Sticker Collection
+          Nuestra Colección de Stickers
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Find the perfect sticker to express yourself. High-quality, durable, and dazzlingly beautiful.
+          Encuentra el sticker perfecto para expresarte. De alta calidad, duraderos y deslumbrantemente hermosos.
         </p>
       </div>
 
@@ -58,7 +58,7 @@ export default function StickersPage() {
               <p className="text-xl font-bold text-iridescent">${sticker.price.toFixed(2)}</p>
               <Button size="sm" onClick={() => addToCart(sticker)} className="font-semibold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 text-white hover:opacity-90 transition-opacity">
                 <ShoppingCart className="mr-2 h-4 w-4" />
-                Add to cart
+                Añadir al carrito
               </Button>
             </CardFooter>
           </Card>

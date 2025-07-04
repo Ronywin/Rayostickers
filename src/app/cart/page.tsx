@@ -17,7 +17,7 @@ export default function CartPage() {
   if (!isCartLoaded) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <h1 className="mb-8 text-center text-4xl font-bold font-headline">Your Shopping Cart</h1>
+        <h1 className="mb-8 text-center text-4xl font-bold font-headline">Tu Carrito de Compras</h1>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
             <div className="lg:col-span-2">
                 <Card>
@@ -54,10 +54,10 @@ export default function CartPage() {
     return (
       <div className="container mx-auto flex h-[60vh] flex-col items-center justify-center text-center">
         <ShoppingCart className="h-24 w-24 text-muted" />
-        <h1 className="mt-6 text-3xl font-bold font-headline">Your cart is empty</h1>
-        <p className="mt-2 text-muted-foreground">Looks like you haven't added any stickers yet.</p>
+        <h1 className="mt-6 text-3xl font-bold font-headline">Tu carrito está vacío</h1>
+        <p className="mt-2 text-muted-foreground">Parece que aún no has añadido ningún sticker.</p>
         <Button asChild className="mt-6 font-semibold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 text-white hover:opacity-90">
-          <Link href="/stickers">Start Shopping</Link>
+          <Link href="/stickers">Empezar a Comprar</Link>
         </Button>
       </div>
     );
@@ -65,7 +65,7 @@ export default function CartPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="mb-8 text-center text-4xl font-bold font-headline">Your Shopping Cart</h1>
+      <h1 className="mb-8 text-center text-4xl font-bold font-headline">Tu Carrito de Compras</h1>
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
         <div className="lg:col-span-2">
             <Card>
@@ -73,11 +73,11 @@ export default function CartPage() {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                            <TableHead className="w-[100px] hidden md:table-cell">Image</TableHead>
-                            <TableHead>Product</TableHead>
-                            <TableHead>Quantity</TableHead>
-                            <TableHead className="text-right">Price</TableHead>
-                            <TableHead className="w-[50px]">Action</TableHead>
+                            <TableHead className="w-[100px] hidden md:table-cell">Imagen</TableHead>
+                            <TableHead>Producto</TableHead>
+                            <TableHead>Cantidad</TableHead>
+                            <TableHead className="text-right">Precio</TableHead>
+                            <TableHead className="w-[50px]">Acción</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -114,7 +114,7 @@ export default function CartPage() {
         <div className="lg:col-span-1">
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-2xl font-headline">Order Summary</CardTitle>
+              <CardTitle className="text-2xl font-headline">Resumen del Pedido</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-4">
               <div className="flex justify-between">
@@ -122,8 +122,8 @@ export default function CartPage() {
                 <span>${subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
-                <span>Shipping</span>
-                <span>FREE</span>
+                <span>Envío</span>
+                <span>GRATIS</span>
               </div>
               <Separator />
               <div className="flex justify-between font-bold text-lg">
@@ -131,7 +131,7 @@ export default function CartPage() {
                 <span>${subtotal.toFixed(2)}</span>
               </div>
               <Button size="lg" className="w-full mt-4 font-semibold text-lg bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 text-white hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                Proceed to Checkout <ArrowRight className="ml-2 h-5 w-5" />
+                Proceder al Pago <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </CardContent>
           </Card>

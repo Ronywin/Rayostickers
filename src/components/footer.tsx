@@ -11,7 +11,7 @@ const Footer = () => {
           Rayo Stickers
         </Link>
         <p className="text-sm text-muted-foreground order-last sm:order-none">
-          © {new Date().getFullYear()} Rayo Stickers. All rights reserved.
+          © {new Date().getFullYear()} Rayo Stickers. Todos los derechos reservados.
         </p>
         <div className="flex gap-2">
           <Button asChild variant="ghost" size="icon">

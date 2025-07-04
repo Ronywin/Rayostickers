@@ -8,10 +8,10 @@ export default function ContactPage() {
     <div className="container mx-auto px-4 py-8 md:py-16">
       <section className="text-center">
         <h1 className="text-4xl font-bold tracking-tight md:text-6xl font-headline">
-          Get in Touch
+          Ponte en Contacto
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-          We'd love to hear from you! Whether you have a question, a suggestion, or just want to say hi, here's how you can reach us.
+          ¡Nos encantaría saber de ti! Si tienes una pregunta, una sugerencia o simplemente quieres saludar, aquí te decimos cómo puedes contactarnos.
         </p>
       </section>
 
@@ -23,9 +23,9 @@ export default function ContactPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <CardTitle className="text-2xl font-headline">Email</CardTitle>
+            <CardTitle className="text-2xl font-headline">Correo Electrónico</CardTitle>
             <p className="mt-2 text-muted-foreground">
-              For support, questions, and collaborations.
+              Para soporte, preguntas y colaboraciones.
             </p>
             <Button asChild variant="link" className="mt-4 text-lg text-iridescent">
               <a href="mailto:hola@rayostickers.com">hola@rayostickers.com</a>
@@ -42,11 +42,11 @@ export default function ContactPage() {
           <CardContent>
             <CardTitle className="text-2xl font-headline">WhatsApp</CardTitle>
             <p className="mt-2 text-muted-foreground">
-              For quick questions and order updates.
+              Para preguntas rápidas y actualizaciones de pedidos.
             </p>
             <Button asChild variant="link" className="mt-4 text-lg text-iridescent">
               <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
-                Chat with us
+                Chatea con nosotros
               </a>
             </Button>
           </CardContent>
@@ -59,9 +59,9 @@ export default function ContactPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <CardTitle className="text-2xl font-headline">Social Media</CardTitle>
+            <CardTitle className="text-2xl font-headline">Redes Sociales</CardTitle>
             <p className="mt-2 text-muted-foreground">
-              Follow us for updates, new arrivals, and more!
+              ¡Síguenos para actualizaciones, novedades y más!
             </p>
             <div className="mt-4 flex justify-center gap-4">
               <Button asChild variant="outline" size="icon">

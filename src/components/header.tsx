@@ -30,7 +30,7 @@ const Header = () => {
         </Link>
         {pathname === '/stickers' && (
           <form onSubmit={handleSearch} className="flex-grow flex justify-center">
-            <Input type="text" placeholder="Search stickers..." className="max-w-xs w-full px-3 py-2 border rounded-md text-sm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+            <Input type="text" placeholder="Buscar stickers..." className="max-w-xs w-full px-3 py-2 border rounded-md text-sm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
           </form>
         )}
 
@@ -43,7 +43,7 @@ const Header = () => {
           </Button>
           <Button variant="ghost" asChild>
             <Link href="/contact" className="font-semibold text-muted-foreground transition-colors hover:text-foreground">
-              Contact
+              Contacto
             </Link>
           </Button>
           <Button variant="ghost" asChild className="relative">
@@ -54,7 +54,7 @@ const Header = () => {
                   {itemCount}
                 </span>
               )}
-              <span className="sr-only">Shopping Cart</span>
+              <span className="sr-only">Carrito de Compras</span>
             </Link>
           </Button>
         </nav>
