@@ -16,10 +16,15 @@ const Header = () => {
           <Sparkles className="h-6 w-6 text-iridescent" />
           Rayo Stickers
         </Link>
-        <nav className="flex items-center gap-1 sm:gap-4">
+        <nav className="flex items-center gap-1 sm:gap-2">
           <Button variant="ghost" asChild>
             <Link href="/stickers" className="font-semibold text-muted-foreground transition-colors hover:text-foreground">
               Stickers
+            </Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <Link href="/custom-sticker" className="font-semibold text-muted-foreground transition-colors hover:text-foreground">
+              Create
             </Link>
           </Button>
           <Button variant="ghost" asChild>
