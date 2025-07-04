@@ -8,10 +8,47 @@ import { useCart } from '@/hooks/use-cart';
 import { Minus, Plus, ShoppingCart, Trash2, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function CartPage() {
-  const { cartItems, updateQuantity, removeFromCart } = useCart();
+  const { cartItems, updateQuantity, removeFromCart, isCartLoaded } = useCart();
   const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  if (!isCartLoaded) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="mb-8 text-center text-4xl font-bold font-headline">Your Shopping Cart</h1>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
+            <div className="lg:col-span-2">
+                <Card>
+                    <CardContent className="p-6">
+                        <div className="space-y-4">
+                            <Skeleton className="h-24 w-full" />
+                            <Skeleton className="h-24 w-full" />
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
+            <div className="lg:col-span-1">
+                <Card>
+                    <CardHeader>
+                        <Skeleton className="h-8 w-3/4" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="space-y-4">
+                            <Skeleton className="h-6 w-full" />
+                            <Skeleton className="h-6 w-full" />
+                            <Separator />
+                            <Skeleton className="h-8 w-full" />
+                            <Skeleton className="h-12 w-full mt-4" />
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+      </div>
+    );
+  }
 
   if (cartItems.length === 0) {
     return (

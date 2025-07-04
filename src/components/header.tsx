@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 
 const Header = () => {
-  const { cartItems } = useCart();
+  const { cartItems, isCartLoaded } = useCart();
   const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
@@ -16,16 +16,21 @@ const Header = () => {
           <Sparkles className="h-6 w-6 text-iridescent" />
           Rayo Stickers
         </Link>
-        <nav className="flex items-center gap-4">
+        <nav className="flex items-center gap-1 sm:gap-4">
           <Button variant="ghost" asChild>
             <Link href="/stickers" className="font-semibold text-muted-foreground transition-colors hover:text-foreground">
               Stickers
             </Link>
           </Button>
+          <Button variant="ghost" asChild>
+            <Link href="/contact" className="font-semibold text-muted-foreground transition-colors hover:text-foreground">
+              Contact
+            </Link>
+          </Button>
           <Button variant="ghost" asChild className="relative">
             <Link href="/cart">
               <ShoppingCart className="h-6 w-6" />
-              {itemCount > 0 && (
+              {isCartLoaded && itemCount > 0 && (
                 <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
                   {itemCount}
                 </span>

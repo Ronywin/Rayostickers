@@ -1,8 +1,10 @@
 'use client';
 
 import type { Sticker, CartItem } from '@/types';
-import React, { createContext, useState, ReactNode } from 'react';
+import React, { createContext, useState, ReactNode, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
+
+const CART_STORAGE_KEY = 'rayo-stickers-cart';
 
 interface CartContextType {
   cartItems: CartItem[];
@@ -10,13 +12,40 @@ interface CartContextType {
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
+  isCartLoaded: boolean;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isCartLoaded, setIsCartLoaded] = useState(false);
   const { toast } = useToast();
+
+  // Load cart from localStorage on initial render
+  useEffect(() => {
+    try {
+      const storedCart = localStorage.getItem(CART_STORAGE_KEY);
+      if (storedCart) {
+        setCartItems(JSON.parse(storedCart));
+      }
+    } catch (error) {
+      console.error("Failed to load cart from localStorage", error);
+    }
+    setIsCartLoaded(true);
+  }, []);
+
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    if (isCartLoaded) {
+      try {
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
+      } catch (error) {
+        console.error("Failed to save cart to localStorage", error);
+      }
+    }
+  }, [cartItems, isCartLoaded]);
+
 
   const addToCart = (sticker: Sticker) => {
     setCartItems((prevItems) => {
@@ -49,11 +78,22 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     if (quantity <= 0) {
       removeFromCart(id);
     } else {
+      let stickerName = '';
       setCartItems((prevItems) =>
-        prevItems.map((item) =>
-          item.id === id ? { ...item, quantity } : item
-        )
+        prevItems.map((item) => {
+          if (item.id === id) {
+            stickerName = item.name;
+            return { ...item, quantity };
+          }
+          return item;
+        })
       );
+      if (stickerName) {
+        toast({
+            title: "Cart updated",
+            description: `Quantity for ${stickerName} has been updated.`,
+        });
+      }
     }
   };
 
@@ -63,7 +103,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart }}
+      value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart, isCartLoaded }}
     >
       {children}
     </CartContext.Provider>
