@@ -23,11 +23,6 @@ const Header = () => {
             </Link>
           </Button>
           <Button variant="ghost" asChild>
-            <Link href="/custom-sticker" className="font-semibold text-muted-foreground transition-colors hover:text-foreground">
-              Create
-            </Link>
-          </Button>
-          <Button variant="ghost" asChild>
             <Link href="/contact" className="font-semibold text-muted-foreground transition-colors hover:text-foreground">
               Contact
             </Link>
